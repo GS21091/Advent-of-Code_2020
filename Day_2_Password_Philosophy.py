@@ -10,7 +10,7 @@ alphabet = ''
 password = ''
 new_count = 0
 
-with open('passwords.txt', 'r') as file:
+with open('Day_2_input.txt', 'r') as file:
     lines = file.read()
     lines = lines.split("\n")
     lines = lines[:-2]

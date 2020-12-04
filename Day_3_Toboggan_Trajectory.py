@@ -3,20 +3,24 @@
 j = 0
 pattern = ''
 count = 0
-with open("path.txt", 'r') as path:
+
+x = int(input("Enter x (right movement): "))
+y = int(input("Enter y (down movement): "))
+
+with open("Day_3_input.txt", 'r') as path:
     lines = path.read()
     lines = lines.split("\n")
 
-for line in lines[2::2]:
+for line in lines[y::y]:
 
     line = line * 1000
 
     if len(line) == 0:
         break
 
-    if line[1 + j] == "#":
+    if line[x + j] == "#":
         count += 1
-    j += 1
+    j += x
 
 print(count)
 
