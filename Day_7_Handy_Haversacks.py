@@ -9,7 +9,7 @@ count = 0
 text = "shiny gold"
 text_del = "bags contain"
 
-with open("Day_7_example_2.txt", "r") as file:
+with open("Day_7_example_1.txt", "r") as file:
     lines = file.read().split("\n")[:-2]
 
 #for line in lines:
@@ -52,6 +52,7 @@ for key, values in data.items():
 
 final = {}
 total = 0
+x = []
 
 for item in w:
     for key in data:
@@ -59,17 +60,26 @@ for item in w:
             break
         if key in item:
             w.append(data[key][0])
-            final[item[0]] = data[key]
+            if item[0] in final:
+                x.append(data[key][0])
+            else:
+                x = data[key]
+                final[item[0]] = x
     
+print(final)
+
 for key, value in final.items():
     value_total = 0
     for item in value:
-        value_total += int(item[0])
-    total += int(key) * (1 + value_total)
+        for i in range(1, len(value)):
+            value_total += int(item[0]) ** i
 
+    total += value_total + int(key)
 print(total)
-
-
-
-
-
+#for key, value in final.items():
+#    value_total = 0
+#    for item in value:
+#        value_total += int(item[0])
+#    total += int(key) * (1 + value_total)
+#
+#print(total)
